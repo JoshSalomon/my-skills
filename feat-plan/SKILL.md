@@ -94,11 +94,12 @@ digraph feat_plan {
 
 **Actions:**
 1. Read and understand the feature request or plan
-2. Read existing PRD, architecture docs, and relevant codebase
-3. Identify which user stories and acceptance criteria are affected
-4. Update PRD with new or modified acceptance criteria
-5. Document any architecture decisions needed
-6. Present changes to the human partner
+2. Search LTM (`mcp__ltm__recall`) for prior decisions, patterns, or lessons related to this feature area — incorporate relevant findings into the approach
+3. Read existing PRD, architecture docs, and relevant codebase
+4. Identify which user stories and acceptance criteria are affected
+5. Update PRD with new or modified acceptance criteria
+6. Document any architecture decisions needed
+7. Present changes to the human partner
 
 **Exit criteria:** PRD and architecture docs updated with clear acceptance criteria.
 
@@ -249,8 +250,14 @@ digraph feat_plan {
 2. Update project documentation if needed:
    - `docs/coverage-report.md` with new coverage data
    - Any other docs referenced by the changes
-3. Present summary to human partner
-4. Wait for manual testing and final approval
+3. Update LTM to reflect the new feature:
+   - Use `mcp__ltm__recall` to check for existing related memories — update rather than duplicate
+   - Use `mcp__ltm__store_memory` to store key architectural decisions, implementation patterns, bug workarounds, or library-specific lessons learned during the feature
+   - Use `mcp__ltm__forget` to remove any memories that are now outdated or incorrect due to the new feature (e.g., a memory saying "associations don't have names" after adding association names)
+   - Only store what would help a future session working on the same area — not session-specific details
+   - Notify the user when a memory is stored or removed
+4. Present summary to human partner
+5. Wait for manual testing and final approval
 
 **Exit criteria:** Human partner has reviewed the summary, performed any manual testing they want, and given explicit approval.
 
